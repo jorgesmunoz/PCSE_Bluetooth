@@ -1,0 +1,513 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="component_event" id="n*BL+=?63MBm5pq**Fn9" x="-988" y="-1052">
+    <mutation component_type="Button" is_generic="false" instance_name="scan" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">scan</field>
+    <statement name="DO">
+      <block type="controls_if" id="p=p%LHbdvpE7k#rUy;#K">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="component_set_get" id="`@B^h2M:LOgow[5p!?5N">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="Available" is_generic="false" instance_name="ClienteBluetooth1"></mutation>
+            <field name="COMPONENT_SELECTOR">ClienteBluetooth1</field>
+            <field name="PROP">Available</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" id="0YdNU,+Z[S$?/A-r!,Q%">
+            <mutation component_type="BluetoothLE" method_name="StartScanning" is_generic="false" instance_name="BluetoothLE1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+            <next>
+              <block type="component_set_get" id="~_U=wr;2Of[S=^~c^qKh">
+                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="status"></mutation>
+                <field name="COMPONENT_SELECTOR">status</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="text" id="SY/E$8b(3HId3|if^0Sy">
+                    <field name="TEXT">Buscando dispositivos...</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="component_method" id="SgmE3w94!xlL.B]9Y{N2">
+            <mutation component_type="Notifier" method_name="ShowMessageDialog" is_generic="false" instance_name="Notificador1"></mutation>
+            <field name="COMPONENT_SELECTOR">Notificador1</field>
+            <value name="ARG0">
+              <block type="text" id="[RigX]P}l!.Xfv5Cg).3">
+                <field name="TEXT">Encienda el bluetooth</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="text" id="?7XVU1Y7WK$xm1Vh#GLE">
+                <field name="TEXT">Error</field>
+              </block>
+            </value>
+            <value name="ARG2">
+              <block type="text" id="!U9dbpKd_hh8j$M),%ef">
+                <field name="TEXT">Aceptar</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="`zuqM3|y7x9#Jh0+[m1`" x="-986" y="-788">
+    <mutation component_type="BluetoothLE" is_generic="false" instance_name="BluetoothLE1" event_name="DeviceFound"></mutation>
+    <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+    <statement name="DO">
+      <block type="component_method" id="-(QF@~S1X9XUWjG^B`r3">
+        <mutation component_type="BluetoothLE" method_name="StopScanning" is_generic="false" instance_name="BluetoothLE1"></mutation>
+        <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+        <next>
+          <block type="component_set_get" id="UZy:A2ulyMqc+AW:mP7C">
+            <mutation component_type="ListPicker" set_or_get="set" property_name="ElementsFromString" is_generic="false" instance_name="SelectorDeLista1"></mutation>
+            <field name="COMPONENT_SELECTOR">SelectorDeLista1</field>
+            <field name="PROP">ElementsFromString</field>
+            <value name="VALUE">
+              <block type="component_set_get" id="ii;rk7YG)tjkbtXeME4}">
+                <mutation component_type="BluetoothLE" set_or_get="get" property_name="DeviceList" is_generic="false" instance_name="BluetoothLE1"></mutation>
+                <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+                <field name="PROP">DeviceList</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="hl]UFKO/b]$TUs+d@}3a">
+                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="status"></mutation>
+                <field name="COMPONENT_SELECTOR">status</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="text" id="WmuB^YCRBdN4.OJ^$yP5">
+                    <field name="TEXT">Seleccione el dispositivo</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="nch9tjU$K`$CcEss()/h" x="-986" y="-653">
+    <mutation component_type="ListPicker" is_generic="false" instance_name="SelectorDeLista1" event_name="AfterPicking"></mutation>
+    <field name="COMPONENT_SELECTOR">SelectorDeLista1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="!mpyP*`)wqv/Fp~MkdhM">
+        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="status"></mutation>
+        <field name="COMPONENT_SELECTOR">status</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="text" id="uWHz.6Xdyv1#9cU1JB{l">
+            <field name="TEXT">Conectar al dispositivo</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="Q=h-S.h|%Q)0F5wnx!j{" x="-982" y="-572">
+    <mutation component_type="Button" is_generic="false" instance_name="Connect" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">Connect</field>
+    <statement name="DO">
+      <block type="controls_if" id="EO0GYp19y8E.yY#Uj#v6">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="v,AJ0W(f@3.i0ES8aLL~">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="component_set_get" id="5ek_4@HLS8]T3KVN1d@!">
+                <mutation component_type="Button" set_or_get="get" property_name="Text" is_generic="false" instance_name="Connect"></mutation>
+                <field name="COMPONENT_SELECTOR">Connect</field>
+                <field name="PROP">Text</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="%9Tx%A!^QWRV?@nx5%9I">
+                <field name="TEXT">Conectar</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="nyGDi4d][T|{7l~S2Mq]">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="math_compare" id="~p}IBn^8r~uV48TI6?wl">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="component_set_get" id="k{*mPhV#G-_{eK[?2/$o">
+                    <mutation component_type="ListPicker" set_or_get="get" property_name="SelectionIndex" is_generic="false" instance_name="SelectorDeLista1"></mutation>
+                    <field name="COMPONENT_SELECTOR">SelectorDeLista1</field>
+                    <field name="PROP">SelectionIndex</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="gq,!mkbZVACT]!PlLSi_">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="component_method" id="%}$~]#M-/`*+ds,*FZ_W">
+                <mutation component_type="BluetoothLE" method_name="Connect" is_generic="false" instance_name="BluetoothLE1"></mutation>
+                <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+                <value name="ARG0">
+                  <block type="component_set_get" id="(}5/_XKA!ePr[,P6Mej9">
+                    <mutation component_type="ListPicker" set_or_get="get" property_name="SelectionIndex" is_generic="false" instance_name="SelectorDeLista1"></mutation>
+                    <field name="COMPONENT_SELECTOR">SelectorDeLista1</field>
+                    <field name="PROP">SelectionIndex</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="*TG6SZ9R4fPY~h=(bqr7">
+                    <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="status"></mutation>
+                    <field name="COMPONENT_SELECTOR">status</field>
+                    <field name="PROP">Text</field>
+                    <value name="VALUE">
+                      <block type="text" id="ZeyY,Af:l16ES-]LNanT">
+                        <field name="TEXT">Conectando...</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="component_method" id="?^9Vt|WT58K+~]ID7##9">
+                <mutation component_type="Notifier" method_name="ShowMessageDialog" is_generic="false" instance_name="Notificador1"></mutation>
+                <field name="COMPONENT_SELECTOR">Notificador1</field>
+                <value name="ARG0">
+                  <block type="text" id="m(_+Qh4XPgF0?hSTOD~C">
+                    <field name="TEXT">No selecciono ningún dispositivo</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="text" id="ci%:Or_{1~LRnEG;}euE">
+                    <field name="TEXT">Error</field>
+                  </block>
+                </value>
+                <value name="ARG2">
+                  <block type="text" id="?1ue;OXWbBw4S;6Apy60">
+                    <field name="TEXT">Aceptar</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="component_method" id="l.,$~~}iNUJ,qx,_GLlD">
+            <mutation component_type="BluetoothLE" method_name="UnregisterForValues" is_generic="false" instance_name="BluetoothLE1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+            <value name="ARG0">
+              <block type="text" id="gdmRJcgrQ?{iHG5gzb*=">
+                <field name="TEXT">0000FFE0-0000-1000-8000-00805F9B34FB</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="text" id="{Cdl(_|RO73Xrn3j,]ep">
+                <field name="TEXT">0000FFE1-0000-1000-8000-00805F9B34FB</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="nJ2/J|*5rgGbt11tZ;bS">
+                <mutation component_type="BluetoothLE" method_name="Disconnect" is_generic="false" instance_name="BluetoothLE1"></mutation>
+                <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="ntx|}ro@7UzF0,RhRdVC" x="-981" y="-102">
+    <mutation component_type="BluetoothLE" is_generic="false" instance_name="BluetoothLE1" event_name="Connected"></mutation>
+    <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="Dqt6a?*Z{}%fgA6.qMW{">
+        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="status"></mutation>
+        <field name="COMPONENT_SELECTOR">status</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="text" id="@VM])d{8cKFHe}`[`Z;E">
+            <field name="TEXT">Conectado</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_method" id="|!RYi-tyR2A]A8^t1`em">
+            <mutation component_type="BluetoothLE" method_name="RegisterForStrings" is_generic="false" instance_name="BluetoothLE1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+            <value name="ARG0">
+              <block type="text" id="S;S.Z9|_[qDDMjV$Ts~c">
+                <field name="TEXT">0000FFE0-0000-1000-8000-00805F9B34FB</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="text" id="3G4Lj3(FlrCSRI.u0VA(">
+                <field name="TEXT">0000FFE1-0000-1000-8000-00805F9B34FB</field>
+              </block>
+            </value>
+            <value name="ARG2">
+              <block type="logic_false" id="PSQ/ujRqgcY?vu-AnXl3">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="CMSqc(pbcTCwRvCvy]uM" x="-977" y="85">
+    <mutation component_type="BluetoothLE" is_generic="false" instance_name="BluetoothLE1" event_name="Disconnected"></mutation>
+    <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="J2K6RHDo7.@:491LD?`i">
+        <mutation component_type="Button" set_or_get="set" property_name="Text" is_generic="false" instance_name="Connect"></mutation>
+        <field name="COMPONENT_SELECTOR">Connect</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="text" id="LsW6cX4QDxSj]mnL~6./">
+            <field name="TEXT">Conectar</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id=")b=bG:L**OvxLyKR/eHt">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="status"></mutation>
+            <field name="COMPONENT_SELECTOR">status</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="text" id="6B?*]Xl}Fb._=6a2;H8{">
+                <field name="TEXT">Desconectado</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="PLuvr#OQ[zBu43ZQE._[" x="-979" y="193">
+    <mutation component_type="Button" is_generic="false" instance_name="led_on" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">led_on</field>
+    <statement name="DO">
+      <block type="controls_if" id="v_7%]Tk%PozH|J}|z/SA">
+        <value name="IF0">
+          <block type="component_set_get" id="aE~6gZgP!DssrSGm*5U+">
+            <mutation component_type="BluetoothLE" set_or_get="get" property_name="IsDeviceConnected" is_generic="false" instance_name="BluetoothLE1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+            <field name="PROP">IsDeviceConnected</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" id="|aOwy#`=|#Yw5jn(gGpQ">
+            <mutation component_type="BluetoothLE" method_name="WriteStrings" is_generic="false" instance_name="BluetoothLE1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+            <value name="ARG0">
+              <block type="text" id="$~L|s0`,pUGq+g5y]HUp">
+                <field name="TEXT">0000FFE0-0000-1000-8000-00805F9B34FB</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="text" id="C7%K+7X^Yrk`60KiV3JT">
+                <field name="TEXT">0000FFE1-0000-1000-8000-00805F9B34FB</field>
+              </block>
+            </value>
+            <value name="ARG2">
+              <block type="logic_false" id="W{$_B0eOnzkrtDb{z{i0">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <value name="ARG3">
+              <block type="text" id="~@LHa:K{[;oPpayXU;RU">
+                <field name="TEXT">h</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="dmel;I]l;}X3,Ks=4Y!x">
+                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="status"></mutation>
+                <field name="COMPONENT_SELECTOR">status</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="text" id="FYI1X6;XLyDb4jA/VmS`">
+                    <field name="TEXT">Led encendido</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="prdzvBrjN`G/414/-g[C" x="-980" y="442">
+    <mutation component_type="Button" is_generic="false" instance_name="led_off" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">led_off</field>
+    <statement name="DO">
+      <block type="controls_if" id=",Dh$./[_?{0iSiCx)Gt{">
+        <value name="IF0">
+          <block type="component_set_get" id="j;g4CQ}dh?#_Gc+=#Tnh">
+            <mutation component_type="BluetoothLE" set_or_get="get" property_name="IsDeviceConnected" is_generic="false" instance_name="BluetoothLE1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+            <field name="PROP">IsDeviceConnected</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" id="1sO)6A4+t+=b@?#}N+Ps">
+            <mutation component_type="BluetoothLE" method_name="WriteStrings" is_generic="false" instance_name="BluetoothLE1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+            <value name="ARG0">
+              <block type="text" id="U%;v`YvUz!XE[b$h%ozi">
+                <field name="TEXT">0000FFE0-0000-1000-8000-00805F9B34FB</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="text" id="u*n`|j@Z;s!/MM3?.U#2">
+                <field name="TEXT">0000FFE1-0000-1000-8000-00805F9B34FB</field>
+              </block>
+            </value>
+            <value name="ARG2">
+              <block type="logic_false" id="t!Z](MfA@bhOFVSES8H?">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <value name="ARG3">
+              <block type="text" id="elRLaafJl{N}.?MakQ$@">
+                <field name="TEXT">l</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="%qV{{x4,[;jCd?MFpFaB">
+                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="status"></mutation>
+                <field name="COMPONENT_SELECTOR">status</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="text" id="T^Q17]yhb9?~9EQfe;h?">
+                    <field name="TEXT">Led apagado</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="5S?dg1#Gx_)~6Ont_t9V" x="-982" y="691">
+    <mutation component_type="BluetoothLE" is_generic="false" instance_name="BluetoothLE1" event_name="StringsReceived"></mutation>
+    <field name="COMPONENT_SELECTOR">BluetoothLE1</field>
+    <statement name="DO">
+      <block type="controls_if" id="O84=iw7P/d-s.2H/dN|p">
+        <value name="IF0">
+          <block type="lists_is_list" id="2^H]{Mns{@1R4]2+bD9c">
+            <value name="ITEM">
+              <block type="lexical_variable_get" id="FK|Jypnpv,CDy}#bnF{U">
+                <mutation>
+                  <eventparam name="stringValues"></eventparam>
+                </mutation>
+                <field name="VAR">stringValues</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_forEach" id="*ZjkR_/16:Z+SICOqFVN">
+            <field name="VAR">item</field>
+            <value name="LIST">
+              <block type="lexical_variable_get" id="IS[}%wKr]6YJs^NB=-H?">
+                <mutation>
+                  <eventparam name="stringValues"></eventparam>
+                </mutation>
+                <field name="VAR">stringValues</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="controls_if" id="gFYm_cf~/yw:?j]Zm6)%">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="Fh]_CXQ}32Pee!;:cyHT">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="lexical_variable_get" id="eME#u^o8A7DpcYbqhNQv">
+                        <field name="VAR">item</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="jI8X1DTaE(L6$7.)8e%L">
+                        <field name="TEXT">LED_ON\r\n</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="component_set_get" id="36m!yjk|n}Bn7naSE|/0">
+                    <mutation component_type="TextBox" set_or_get="set" property_name="BackgroundColor" is_generic="false" instance_name="AppLed"></mutation>
+                    <field name="COMPONENT_SELECTOR">AppLed</field>
+                    <field name="PROP">BackgroundColor</field>
+                    <value name="VALUE">
+                      <block type="color_red" id="6`F3{[{Vp}wX,OB0hbq^">
+                        <field name="COLOR">#ff0000</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="component_set_get" id="(x-.v#ytqv,4x)SW5KXR">
+                        <mutation component_type="TextBox" set_or_get="set" property_name="Text" is_generic="false" instance_name="AppLed"></mutation>
+                        <field name="COMPONENT_SELECTOR">AppLed</field>
+                        <field name="PROP">Text</field>
+                        <value name="VALUE">
+                          <block type="text" id="6ViXv,ESC;!t7{eye!+=">
+                            <field name="TEXT">ON</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="(}q{Mc3l0-2,^kB$_#j9">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="lexical_variable_get" id="|s@^)kEg@bl%pFNi^FFx">
+                        <field name="VAR">item</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="UrojxE708`.cP?$%BT-h">
+                        <field name="TEXT">LED_OFF\r\n</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="component_set_get" id="tal~qC1zbB[Ou$NeS`SD">
+                    <mutation component_type="TextBox" set_or_get="set" property_name="BackgroundColor" is_generic="false" instance_name="AppLed"></mutation>
+                    <field name="COMPONENT_SELECTOR">AppLed</field>
+                    <field name="PROP">BackgroundColor</field>
+                    <value name="VALUE">
+                      <block type="color_black" id="}3_3u7P({fRFu7Sr`.6S">
+                        <field name="COLOR">#000000</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="component_set_get" id="is{N{3?2/kI0vO*LrE=;">
+                        <mutation component_type="TextBox" set_or_get="set" property_name="Text" is_generic="false" instance_name="AppLed"></mutation>
+                        <field name="COMPONENT_SELECTOR">AppLed</field>
+                        <field name="PROP">Text</field>
+                        <value name="VALUE">
+                          <block type="text" id="qXsf#u9~y)Mh#sL7lInb">
+                            <field name="TEXT">OFF</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="206" language-version="31"></yacodeblocks>
+</xml>
